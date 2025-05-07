@@ -1,0 +1,105 @@
+@import 'variables';
+@import 'mixins';
+
+// Reset and base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  color: $text-color;
+  background-color: $background-color;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: $spacing-4;
+}
+
+h1 { font-size: $font-size-4xl; }
+h2 { font-size: $font-size-3xl; }
+h3 { font-size: $font-size-2xl; }
+
+// Layout
+.container {
+  @include container;
+}
+
+// Navigation
+.nav {
+  background-color: $white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: $spacing-4 0;
+
+  &__container {
+    @include container;
+    @include flex-between;
+  }
+
+  &__logo {
+    font-size: $font-size-xl;
+    font-weight: bold;
+    color: $text-color;
+    text-decoration: none;
+  }
+
+  &__menu {
+    display: flex;
+    gap: $spacing-6;
+
+    a {
+      color: $text-color-light;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $text-color;
+      }
+    }
+  }
+}
+
+// Components
+.card {
+  background-color: $white;
+  border-radius: 0.5rem;
+  padding: $spacing-6;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.button {
+  @include button;
+  background-color: $primary-color;
+  color: $white;
+  border: none;
+  
+  &--secondary {
+    background-color: $gray-200;
+    color: $text-color;
+    
+    &:hover {
+      background-color: darken($gray-200, 5%);
+    }
+  }
+}
+
+// Grid
+.grid {
+  display: grid;
+  gap: $spacing-6;
+  
+  @include responsive(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include responsive(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+} 
