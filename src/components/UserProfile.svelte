@@ -3,8 +3,7 @@
     name: '',
     email: '',
     major: '',
-    year: '',
-    gpa: null
+    year: ''
   };
 </script>
 
@@ -28,10 +27,6 @@
       <div class="profile-card__field">
         <label>Year</label>
         <p>{user.year || 'Not Set'}</p>
-      </div>
-      <div class="profile-card__field">
-        <label>GPA</label>
-        <p>{user.gpa || 'Not Set'}</p>
       </div>
     </div>
 

@@ -5,8 +5,7 @@
     name: 'John Doe',
     email: 'john.doe@example.com',
     major: 'Computer Science',
-    year: 'Junior',
-    gpa: 3.8
+    year: 'Junior'
   };
 </script>
 
