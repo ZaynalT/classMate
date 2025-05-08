@@ -10,7 +10,6 @@
         <a href="/">Home</a>
         <a href="/courses">Courses</a>
         <a href="/profile">Profile</a>
-        <a href="/progress">Progress</a>
       </div>
     </div>
   </nav>

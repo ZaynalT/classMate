@@ -1,5 +1,8 @@
 <script lang="ts">
+  import { goto } from '$app/navigation';
+  import { onMount } from 'svelte';
   import type { PageData } from './$types';
+  import CourseNavigation from '$lib/components/CourseNavigation.svelte';
 
   export let data: PageData;
 
@@ -8,107 +11,79 @@
     name: string;
   }
 
+  interface Assignment {
+    id: string;
+    name: string;
+    dueDate: string;
+    description: string;
+    courseId: string;
+    completed?: boolean;
+    grade?: number;
+  }
+
   const course: Course | null = data.course;
+  let assignments: Assignment[] = [];
+  let upcomingAssignments: Assignment[] = [];
+
+  onMount(() => {
+    goto(`/courses/${data.course?.id}/overview`);
+  });
+
+  function getUpcomingAssignments(assignments: Assignment[]): Assignment[] {
+    const now = new Date();
+    const oneWeekFromNow = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+
+    return assignments
+      .filter(assignment => {
+        if (assignment.completed) return false;
+        const dueDate = new Date(assignment.dueDate);
+        return dueDate <= oneWeekFromNow && dueDate >= now;
+      })
+      .sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime());
+  }
+
+  function formatDate(dateString: string) {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  }
+
+  function getTimeRemaining(dueDate: string) {
+    const now = new Date();
+    const due = new Date(dueDate);
+    const diff = due.getTime() - now.getTime();
+
+    if (diff < 0) return { text: 'Overdue', status: 'overdue' };
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+    let status = 'normal';
+    if (days <= 3) status = 'urgent';
+    else if (days <= 7) status = 'warning';
+
+    return {
+      text: `${days} days, ${hours} hours, ${minutes} minutes remaining`,
+      status
+    };
+  }
 </script>
 
-<div class="container">
-  {#if !course}
-    <div class="error">
-      <h1>Course Not Found</h1>
-      <p>The course you're looking for doesn't exist.</p>
-      <a href="/courses" class="button">Back to Courses</a>
-    </div>
-  {:else}
-    <div class="course">
-      <a href="/courses" class="button button--secondary back-button">Back to Courses</a>
-      <div class="course__header">
-        <h1 class="text-center">{course.name}</h1>
-      </div>
-
-      <div class="course__content">
-        <!-- Add course content here -->
-        <p>Course details coming soon...</p>
-      </div>
-    </div>
-  {/if}
+<div class="loading">
+  <p>Loading course...</p>
 </div>
 
 <style lang="scss">
-  @import '../../../styles/variables';
+  @import '../../../styles/_variables';
 
-  .container {
-    margin-top: $spacing-8;
-  }
-
-  .text-center {
-    text-align: center;
-  }
-
-  .error {
-    text-align: center;
-    padding: $spacing-8;
-
-    h1 {
-      color: $text-color;
-      margin-bottom: $spacing-4;
-    }
-
-    p {
-      color: $text-color-light;
-      margin-bottom: $spacing-6;
-    }
-  }
-
-  .course {
-    position: relative;
-
-    .back-button {
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
-
-    &__header {
-      margin-bottom: $spacing-8;
-      padding-top: $spacing-8;
-
-      h1 {
-        color: $text-color;
-        margin: 0;
-      }
-    }
-
-    &__content {
-      background: $white;
-      padding: $spacing-6;
-      border-radius: $border-radius;
-      box-shadow: $shadow-md;
-    }
-  }
-
-  .button {
-    display: inline-block;
-    padding: $spacing-2 $spacing-4;
-    background: $primary-color;
-    color: $white;
-    border: none;
-    border-radius: $border-radius;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: $font-size-base;
-    transition: background-color 0.2s ease-in-out;
-
-    &:hover {
-      background: $primary-color-dark;
-    }
-
-    &--secondary {
-      background: $gray-300;
-      color: $text-color;
-
-      &:hover {
-        background: $gray-400;
-      }
-    }
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    color: $text-color-light;
   }
 </style> 

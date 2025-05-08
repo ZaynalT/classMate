@@ -35,7 +35,7 @@
 </div>
 
 <style lang="scss">
-  @import '../styles/variables';
+  @import '../styles/_variables';
   @import '../styles/mixins';
 
   .profile-card {

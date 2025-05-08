@@ -1,81 +1,112 @@
-# ClassMate - Academic Progress Tracking
+# ClassMate - Student Course Management System
 
-ClassMate is a modern web application built with SvelteKit that helps students track their academic progress, manage assignments, and stay organized throughout their educational journey.
+ClassMate is a modern web application designed to help students manage their courses, assignments, and track their academic progress. Built with SvelteKit, it provides an intuitive interface for organizing academic tasks and monitoring performance. It also gives the parents an simple way to overview and help them identify where the student lacks and can improve
 
 ## Features
 
-- 📊 Track academic progress and grades
-- 🎯 Set and monitor educational goals
-- 📝 Manage assignments and deadlines
-- 👤 User profiles with academic information
-- 📱 Responsive design for all devices
+### Course Management
+- View all enrolled courses
+- Add new courses
+- Course overview with key information
+- Navigation between course sections
 
-## Tech Stack
+### Assignment Tracking
+- Create and manage assignments for each course
+- Set due dates and descriptions
+- Mark assignments as completed
+- Grade assignments using letter grades (A-F)
+- View assignment details including:
+  - Assignment name and description
+  - Due date
+  - Completion status
+  - Grade (if completed)
+  - Daily progress tracking through memos
 
-- [SvelteKit](https://kit.svelte.dev/) - Frontend framework
-- [SASS](https://sass-lang.com/) - CSS preprocessor
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
-- [Vite](https://vitejs.dev/) - Build tool
+### Grade Overview
+- Visual representation of assignment grades
+- Progress bars for each completed assignment
+- Color-coded grade indicators
+- Average grade calculation
+- Grade distribution visualization
 
-## Prerequisites
+### Daily Progress Tracking
+- Add daily memos for each assignment
+- Track progress towards assignment goals
+- Chronological list of daily activities
+- Timestamp for each memo entry
+- Persistent storage of progress notes
 
-- Node.js (v16 or higher)
-- npm (v7 or higher)
+## Technical Features
+
+### Modern UI/UX
+- Responsive design
+- Clean and intuitive interface
+- Smooth transitions and animations
+- Consistent styling across all pages
+
+### Data Management
+- Local storage for data persistence
+- Real-time updates
+- Efficient state management
+- Type-safe implementation with TypeScript
+
+### Navigation
+- Intuitive course navigation
+- Easy access to all features
+- Clear visual hierarchy
+- Consistent navigation patterns
 
 ## Getting Started
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/classmate.git
-cd classmate
-```
-
+1. Clone the repository
 2. Install dependencies:
-```bash
-npm install
-```
-
+   ```bash
+   npm install
+   ```
 3. Start the development server:
-```bash
-npm run dev
-```
-
-4. Open your browser and visit `http://localhost:5173`
+   ```bash
+   npm run dev
+   ```
+4. Open your browser and navigate to `http://localhost:5173`
 
 ## Project Structure
 
 ```
-classmate/
-├── src/
-│   ├── components/     # Reusable components
-│   ├── lib/           # Utility functions and shared code
-│   ├── routes/        # Page components and routing
-│   └── styles/        # SASS styles and variables
-├── static/            # Static assets
-└── tests/            # Test files
+src/
+├── lib/
+│   ├── components/
+│   │   ├── CourseNavigation.svelte
+│   │   ├── AddAssignmentForm.svelte
+│   │   └── DailyMemo.svelte
+│   └── styles/
+│       └── _variables.scss
+├── routes/
+│   ├── courses/
+│   │   ├── [id]/
+│   │   │   ├── overview/
+│   │   │   ├── assignments/
+│   │   │   │   └── [assignmentId]/
+│   │   │   └── grade-graph/
+│   │   └── +page.svelte
+│   └── +layout.svelte
+└── app.html
 ```
 
-## Available Scripts
+## Technologies Used
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run check` - Type-check the project
-- `npm run check:watch` - Type-check in watch mode
+- SvelteKit
+- TypeScript
+- SCSS
+- Local Storage API
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- SvelteKit team for the amazing framework
-- All contributors who have helped shape this project 
+This project is licensed under the MIT License - see the LICENSE file for details. 

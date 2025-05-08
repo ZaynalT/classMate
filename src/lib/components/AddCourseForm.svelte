@@ -62,7 +62,7 @@
 </div>
 
 <style lang="scss">
-  @import '../../styles/variables';
+  @import '../../styles/_variables';
 
   .form-container {
     background: $white;
@@ -104,7 +104,7 @@
     &__actions {
       display: flex;
       gap: $spacing-2;
-      justify-content: flex-end;
+      justify-content: center;
     }
   }
 

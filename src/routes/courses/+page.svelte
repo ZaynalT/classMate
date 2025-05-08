@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import AddCourseForm from '$lib/components/AddCourseForm.svelte';
+    import CourseSearch from '$lib/components/CourseSearch.svelte';
   
     interface Course {
       id: string;
@@ -8,6 +9,7 @@
     }
 
     let courses: Course[] = [];
+    let filteredCourses: Course[] = [];
     let showForm = false;
     
     function generateUrlId(name: string): string {
@@ -15,6 +17,13 @@
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, '-') // Replace non-alphanumeric chars with hyphens
         .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+    }
+
+    function handleSearch(event: CustomEvent<string>) {
+      const query = event.detail.toLowerCase();
+      filteredCourses = courses.filter(course => 
+        course.name.toLowerCase().includes(query)
+      );
     }
 
     onMount(() => {
@@ -29,20 +38,23 @@
             courses = oldCourses.map((course: any) => ({
               id: generateUrlId(course.name),
               name: course.name
-            }));
+            })).sort((a: Course, b: Course) => a.name.localeCompare(b.name));
             localStorage.setItem('courses', JSON.stringify(courses));
           } else {
-            courses = oldCourses;
+            courses = oldCourses.sort((a: Course, b: Course) => a.name.localeCompare(b.name));
           }
+          filteredCourses = [...courses];
         } catch (e) {
           console.error('Error loading courses:', e);
           courses = [];
+          filteredCourses = [];
         }
       }
     });
 
     function handleAddCourse(event: CustomEvent<Course>) {
-      courses = [...courses, event.detail];
+      courses = [...courses, event.detail].sort((a, b) => a.name.localeCompare(b.name));
+      filteredCourses = [...courses];
       localStorage.setItem('courses', JSON.stringify(courses));
       showForm = false;
     }
@@ -67,8 +79,10 @@
     />
   {/if}
   
+  <CourseSearch on:search={handleSearch} />
+  
   <div class="courses__grid">
-    {#each courses as course}
+    {#each filteredCourses as course}
       <div class="card">
         <div class="card__content">
           <h2>{course.name}</h2>
@@ -82,7 +96,7 @@
 </div>
 
 <style lang="scss">
-  @import '../../styles/variables';
+  @import '../../styles/_variables';
   @import '../../styles/mixins';
 
   .text-center {
