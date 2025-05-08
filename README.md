@@ -1,60 +1,56 @@
-# ClassMate - Student Course Management System
+# ClassMate - Course Management Application
 
-ClassMate is a modern web application designed to help students manage their courses, assignments, and track their academic progress. Built with SvelteKit, it provides an intuitive interface for organizing academic tasks and monitoring performance. It also gives the parents an simple way to overview and help them identify where the student lacks and can improve
+A modern web application for managing courses, assignments, and grades. Built with SvelteKit and TypeScript.
 
 ## Features
 
 ### Course Management
-- View all enrolled courses
-- Add new courses
-- Course overview with key information
-- Navigation between course sections
+- Create and manage multiple courses
+- View course overview with upcoming assignments
+- Track course progress and completion rates
+- Alphabetical sorting of courses
+- Search functionality to filter courses
 
-### Assignment Tracking
-- Create and manage assignments for each course
-- Set due dates and descriptions
-- Mark assignments as completed
-- Grade assignments using letter grades (A-F)
-- View assignment details including:
-  - Assignment name and description
-  - Due date
-  - Completion status
-  - Grade (if completed)
-  - Daily progress tracking through memos
+### Assignment Management
+- Add new assignments with due dates and descriptions
+- Mark assignments as complete
+- Track assignment status (pending/completed)
+- View upcoming assignments with time remaining
+- Click on assignments to view detailed information
 
-### Grade Overview
-- Visual representation of assignment grades
-- Progress bars for each completed assignment
-- Color-coded grade indicators
-- Average grade calculation
-- Grade distribution visualization
-
-### Daily Progress Tracking
-- Add daily memos for each assignment
-- Track progress towards assignment goals
-- Chronological list of daily activities
-- Timestamp for each memo entry
-- Persistent storage of progress notes
-
-## Technical Features
-
-### Modern UI/UX
-- Responsive design
-- Clean and intuitive interface
-- Smooth transitions and animations
-- Consistent styling across all pages
-
-### Data Management
-- Local storage for data persistence
-- Real-time updates
-- Efficient state management
-- Type-safe implementation with TypeScript
+### Grade System
+- Letter grade system (A, B, C, D, E, F)
+- Color-coded grade display
+- Progress bars for visual grade representation
+- Average grade calculation with percentage
+- Grade history tracking
 
 ### Navigation
-- Intuitive course navigation
-- Easy access to all features
-- Clear visual hierarchy
-- Consistent navigation patterns
+- Breadcrumb navigation for easy page hierarchy
+- Course-specific navigation tabs
+- Back to courses button
+- Intuitive navigation between course sections
+
+### Daily Memo
+- Track daily progress
+- Record time spent on assignments
+- Add notes and goals
+- View memo history
+
+### User Interface
+- Clean and modern design
+- Responsive layout
+- Color-coded status indicators
+- Progress visualization
+- Consistent styling across all pages
+
+## Technical Features
+- Built with SvelteKit
+- TypeScript for type safety
+- SCSS for styling
+- Local storage for data persistence
+- Responsive design
+- Component-based architecture
 
 ## Getting Started
 
@@ -67,37 +63,21 @@ ClassMate is a modern web application designed to help students manage their cou
    ```bash
    npm run dev
    ```
-4. Open your browser and navigate to `http://localhost:5173`
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
 
 ## Project Structure
 
 ```
 src/
 ├── lib/
-│   ├── components/
-│   │   ├── CourseNavigation.svelte
-│   │   ├── AddAssignmentForm.svelte
-│   │   └── DailyMemo.svelte
-│   └── styles/
-│       └── _variables.scss
+│   ├── components/     # Reusable components
+│   └── styles/        # Global styles and variables
 ├── routes/
-│   ├── courses/
-│   │   ├── [id]/
-│   │   │   ├── overview/
-│   │   │   ├── assignments/
-│   │   │   │   └── [assignmentId]/
-│   │   │   └── grade-graph/
-│   │   └── +page.svelte
-│   └── +layout.svelte
-└── app.html
+│   ├── courses/       # Course-related pages
+│   ├── profile/       # User profile
+│   └── assignments/   # Assignment management
+└── app.html          # Main HTML template
 ```
-
-## Technologies Used
-
-- SvelteKit
-- TypeScript
-- SCSS
-- Local Storage API
 
 ## Contributing
 
@@ -109,4 +89,4 @@ src/
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+This project is licensed under the MIT License. 
