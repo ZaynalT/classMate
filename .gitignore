@@ -38,5 +38,4 @@ yarn-error.log*
 /.svelte-kit
 /package
 /build
-/static
 /vercel.json 
