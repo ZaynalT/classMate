@@ -21,11 +21,11 @@
 
     <div class="profile-card__details">
       <div class="profile-card__field">
-        <label>Major</label>
+        <span class="profile-card__label">Major</span>
         <p>{user.major || 'Not Set'}</p>
       </div>
       <div class="profile-card__field">
-        <label>Year</label>
+        <span class="profile-card__label">Year</span>
         <p>{user.year || 'Not Set'}</p>
       </div>
     </div>
@@ -35,8 +35,8 @@
 </div>
 
 <style lang="scss">
-  @import '../styles/_variables';
-  @import '../styles/mixins';
+  @use '../styles/_variables' as *;
+  @use '../styles/mixins' as *;
 
   .profile-card {
     &__content {
@@ -80,7 +80,7 @@
     }
 
     &__field {
-      label {
+      .profile-card__label {
         display: block;
         font-size: 0.875rem;
         font-weight: 500;

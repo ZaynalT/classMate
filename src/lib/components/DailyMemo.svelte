@@ -117,7 +117,7 @@
 </div>
 
 <style lang="scss">
-  @import '../../styles/_variables';
+  @use '../../styles/_variables' as *;
 
   .daily-memo {
     margin-top: $spacing-8;

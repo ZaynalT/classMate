@@ -205,7 +205,7 @@
 </div>
 
 <style lang="scss">
-  @import '../../../../../styles/_variables';
+  @use '../../../../../styles/_variables' as *;
 
   .container {
     margin-top: $spacing-8;

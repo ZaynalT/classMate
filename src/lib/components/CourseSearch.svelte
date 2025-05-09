@@ -40,7 +40,7 @@
 </div>
 
 <style lang="scss">
-  @import '../../styles/_variables';
+  @use '../../styles/_variables' as *;
 
   .search-container {
     margin-bottom: $spacing-4;

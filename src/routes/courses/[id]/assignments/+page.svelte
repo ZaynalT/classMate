@@ -173,7 +173,7 @@
 </div>
 
 <style lang="scss">
-  @import '../../../../styles/_variables';
+  @use '../../../../styles/_variables' as *;
 
   .container {
     margin-top: $spacing-8;
@@ -298,30 +298,6 @@
     }
   }
 
-  .grade-input {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-2;
-
-    .grade-select {
-      padding: $spacing-2;
-      border: 1px solid $gray-300;
-      border-radius: $border-radius;
-      font-size: $font-size-base;
-      min-width: 120px;
-
-      &:focus {
-        outline: none;
-        border-color: $primary-color;
-      }
-    }
-
-    &__actions {
-      display: flex;
-      gap: $spacing-2;
-    }
-  }
-
   .button {
     display: inline-block;
     padding: $spacing-2 $spacing-4;
@@ -346,22 +322,5 @@
         background: $gray-400;
       }
     }
-  }
-
-  .grade-select {
-    padding: $spacing-2;
-    border: 1px solid $gray-300;
-    border-radius: $border-radius;
-    font-size: $font-size-base;
-    min-width: 120px;
-
-    &:focus {
-      outline: none;
-      border-color: $primary-color;
-    }
-  }
-
-  .completed-badge {
-    font-weight: 600;
   }
 </style> 

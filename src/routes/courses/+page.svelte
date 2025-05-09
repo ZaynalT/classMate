@@ -96,60 +96,60 @@
 </div>
 
 <style lang="scss">
-  @import '../../styles/_variables';
-  @import '../../styles/mixins';
+  @use '../../styles/_variables' as vars;
+  @use '../../styles/mixins' as mix;
 
   .text-center {
     text-align: center;
   }
 
   .container {
-    margin-top: $spacing-8;
+    margin-top: vars.$spacing-8;
   }
 
   .courses {
-    margin-top: $spacing-8;
+    margin-top: vars.$spacing-8;
     
     &__header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: $spacing-6;
+      margin-bottom: vars.$spacing-6;
     }
 
     &__grid {
       display: grid;
-      gap: $spacing-6;
-      margin-top: $spacing-6;
+      gap: vars.$spacing-6;
+      margin-top: vars.$spacing-6;
       
-      @include responsive(md) {
+      @include mix.responsive(md) {
         grid-template-columns: repeat(2, 1fr);
       }
       
-      @include responsive(lg) {
+      @include mix.responsive(lg) {
         grid-template-columns: repeat(3, 1fr);
       }
     }
   }
 
   .card {
-    border-radius: $border-radius;
+    border-radius: vars.$border-radius;
     overflow: hidden;
-    box-shadow: $shadow-md;
+    box-shadow: vars.$shadow-md;
     transition: transform 0.2s ease-in-out;
-    background: $white;
+    background: vars.$white;
 
     &:hover {
       transform: translateY(-4px);
     }
 
     &__content {
-      padding: $spacing-4;
+      padding: vars.$spacing-4;
       text-align: center;
 
       h2 {
-        margin-bottom: $spacing-4;
-        color: $text-color;
+        margin-bottom: vars.$spacing-4;
+        color: vars.$text-color;
       }
     }
 
@@ -161,18 +161,18 @@
 
   .button {
     display: inline-block;
-    padding: $spacing-2 $spacing-4;
-    background: $primary-color;
-    color: $white;
+    padding: vars.$spacing-2 vars.$spacing-4;
+    background: vars.$primary-color;
+    color: vars.$white;
     border: none;
-    border-radius: $border-radius;
+    border-radius: vars.$border-radius;
     cursor: pointer;
     text-decoration: none;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     transition: background-color 0.2s ease-in-out;
 
     &:hover {
-      background: $primary-color-dark;
+      background: vars.$primary-color-dark;
     }
   }
 </style>

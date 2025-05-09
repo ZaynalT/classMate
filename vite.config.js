@@ -12,5 +12,12 @@ export default defineConfig({
 		port: 4173,
 		strictPort: false,
 		host: true
+	},
+	css: {
+		preprocessorOptions: {
+			scss: {
+				api: 'modern'
+			}
+		}
 	}
 }); 

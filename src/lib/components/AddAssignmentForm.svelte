@@ -78,7 +78,7 @@
 </div>
 
 <style lang="scss">
-  @import '../../styles/_variables';
+  @use '../../styles/_variables' as *;
 
   .add-assignment {
     margin-bottom: $spacing-6;

@@ -1,5 +1,6 @@
-@import '_variables';
-@import 'mixins';
+@use '_variables' as *;
+@use 'mixins' as *;
+@use "sass:color";
 
 // Reset and base styles
 * {
@@ -85,7 +86,7 @@ h3 { font-size: $font-size-2xl; }
     color: $text-color;
     
     &:hover {
-      background-color: darken($gray-200, 5%);
+      background-color: color.adjust($gray-200, $lightness: -5%);
     }
   }
 }

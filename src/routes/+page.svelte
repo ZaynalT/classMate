@@ -33,7 +33,7 @@
 </div>
 
 <style lang="scss">
-  @import '../styles/_variables';
+  @use '../styles/_variables' as *;
   
   .home {
     text-align: center;
